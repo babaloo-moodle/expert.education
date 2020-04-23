@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="availability/condition/payallways/db" VERSION="20200210" COMMENT="XMLDB file for Moodle availability/condition/payallways"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="availability_payallways" COMMENT="Default comment for availability_payallways, please edit me">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="availability_payallways_ci" COMMENT="Course info - cc num, operating mode etc">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" COMMENT="Course id to connect with the card number"/>
+        <FIELD NAME="card_number" TYPE="char" LENGTH="16" NOTNULL="false" SEQUENCE="false" COMMENT="Coursemanager/coursecreator card number"/>
+        <FIELD NAME="operating_mode" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="1" SEQUENCE="false" COMMENT="Plugin operating mode for the course"/>
+        <FIELD NAME="course_closed" TYPE="int" LENGTH="1" NOTNULL="false" DEFAULT="0" SEQUENCE="false" COMMENT="if the whole course is closed"/>
+        <FIELD NAME="section_id" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" COMMENT="Block course starting from section"/>
+        <FIELD NAME="activity_id" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" COMMENT="Activity in section to start blocking from"/>
+        <FIELD NAME="author_name" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Course author full name"/>
+        <FIELD NAME="passport" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Passport number"/>
+        <FIELD NAME="edrpu" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="EDRPU code"/>
+        <FIELD NAME="iban" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="IBAN code"/>
+        <FIELD NAME="inn" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="ИНН"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="courseidfk" TYPE="foreign" FIELDS="course_id" REFTABLE="course" REFFIELDS="id" COMMENT="Course id foreign key"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
